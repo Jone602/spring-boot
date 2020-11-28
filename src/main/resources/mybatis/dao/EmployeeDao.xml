@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.feng.springboot.dao.EmployeeDao">
+    <resultMap id="employeeMap" type="Employee">
+        <id property="eId" column="eid"/>
+        <result property="eName" column="eName"/>
+        <result property="email" column="email"/>
+        <result property="gender" column="gender"/>
+        <result property="birth" column="birth"/>
+        <result property="department" column="did"/>
+        <association property="eDepartment" javaType="Department">
+            <id property="dId" column="did"/>
+            <result property="departmentName" column="dname"/>
+        </association>
+    </resultMap>
+    <select id="getEmployees" resultMap="employeeMap">
+   select
+   e.eid as eId,
+   e.eName,
+   e.email,
+   e.gender,
+   e.birth,
+   d.dId as did,
+   d.departmentName as dname
+   from
+   fengchao.employee e
+   join
+   fengchao.department d
+   on
+   d.dId=e.department
+</select>
+    <select id="getEmployeeById" resultType="Employee">
+        select * from fengchao.employee where eid = #{eid};
+    </select>
+    <insert id="add" parameterType="Employee">
+        insert into fengchao.employee(eid, eName, email, gender, department, birth) values (#{eid}, #{eName}, #{email}, #{gender}, #{department}, #{birth});
+    </insert>
+</mapper>
