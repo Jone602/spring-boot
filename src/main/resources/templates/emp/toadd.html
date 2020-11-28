@@ -73,11 +73,12 @@
 							<label>部门</label>
 							<select class="form-control" name="department.dId">
 								<option th:each="dept:${department}" th:text="${dept.getDepartmentName}" th:value="${dept.getDId}"></option>
+								<p th:text="${dept.getDId}"></p>
 							</select>
 						</div>
 						<div class="form-group">
 							<label>生日</label>
-							<input type="text" class="form-control" name="birth" placeholder="2020/5/22">
+							<input type="text" class="form-control" name="birth" placeholder="2020-5-22">
 						</div>
 						<button type="submit" class="btn btn-primary">添加</button>
 					</form>

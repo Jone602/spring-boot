@@ -71,7 +71,7 @@
 									<td th:text="${emp.getEName}"></td>
 									<td th:text="${emp.getEmail}"></td>
 									<td th:text="${emp.getGender==0?'女':'男'}"></td>
-									<td th:text="${emp.getDepartment.getDepartmentName()}"></td>
+									<td th:text="${emp.getEDepartment().getDepartmentName}"></td>
 									<td th:text="${#dates.format(emp.getBirth,'dd/MM/yyyy')}"></td>
 									<td>
 										<a class="btn btn-sm btn-primary" th:href="@{#}">删除</a>
